@@ -1,0 +1,83 @@
+@import url(https://fonts.googleapis.com/css?family=Passion+One:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+html {
+  box-sizing: border-box; }
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit; }
+
+/*-----------------------------------*/
+body {
+  background-image: url("http://i.imgur.com/NvS2cQ3.png");
+  background-repeat: no-repeat; }
+
+header img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 2.5em;
+  position: relative;
+  right: 8em;
+  padding-top: 7em; }
+
+header h1 {
+  font-family: "Passion One", cursive;
+  font-size: 4em;
+  text-align: center;
+  margin-top: 0;
+  color: #FFEF42; }
+
+section div.play-button {
+  text-align: center;
+  padding-bottom: 1em; }
+  section div.play-button a {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    text-decoration: none;
+    background-color: #00AFF0;
+    color: #fff;
+    padding: 0.75em 2.2em;
+    border-radius: 30px; }
+    section div.play-button a:hover {
+      background-color: #05bbff; }
+
+section div.reveal {
+  text-align: center;
+  margin-top: 1.5em;
+  color: #AEAEAE;
+  font-weight: 300; }
+  section div.reveal:hover {
+    cursor: pointer;
+    color: #bbbbbb; }
+
+section h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  text-align: center;
+  color: #FFEF42;
+  display: none; }
+
+/*-----------------------------------*/
+.container {
+  width: 100%; }
+  @media screen and (min-width: 24em) {
+    .container {
+      width: 90%;
+      max-width: 40em;
+      margin: 0 auto; } }
+  @media screen and (min-width: 1024px) {
+    .container {
+      max-width: 1040px;
+      margin: 0 auto; } }
+
+/*section {
+    width: 100%;
+    @media screen and ($bp-small) {
+        width: 50%;
+    }
+    @media screen and ($desktop) {
+        max-width: 25%;
+    }
+}*/
