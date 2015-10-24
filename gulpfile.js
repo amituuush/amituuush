@@ -42,7 +42,7 @@ gulp.task('html', function() {
 
 // NOT FUNCTIONING (had '.' after "main.js')") JavaScript build task, removes whitespace and concatenates all files
 gulp.task('scripts', function() {
-  return browserify('/site/js/main.js')
+  return browserify('site/js/main.js')
     .bundle()
     .pipe(source('app.js'))
     .pipe(buffer())
