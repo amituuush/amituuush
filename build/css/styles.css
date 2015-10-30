@@ -368,10 +368,10 @@ body {
 
 /*-----------------------------------*/
 body {
-  /*
-  background-image: url('../img/flappybird-bg.png');
-  */
-  background-repeat: no-repeat; }
+  background: url("../img/flappybird-bg-small.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-color: $red;*/ }
 
 container > img {
   position: absolute;

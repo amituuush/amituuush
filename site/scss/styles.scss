@@ -36,10 +36,23 @@ $orange: #F19C65;
 $red: #CE4D45;
 
 body {
-  /*
-  background-image: url('../img/flappybird-bg.png');
-  */
+
+  background: url('../img/flappybird-bg-small.png');
   background-repeat: no-repeat;
+  background-size: cover;
+
+  @media screen and (min-width: 480px) {
+    background: url('../img/flappybird-bg-med.png');
+  }
+
+  @media screen and (min-width: 768px) {
+    background: url('../img/flappybird-bg-large.png');
+  }
+
+  @media screen and (min-width: 960px) {
+    background: url('../img/flappybird-bg-xl.png');
+  }
+  
 
 }
 

@@ -368,10 +368,19 @@ body {
 
 /*-----------------------------------*/
 body {
-  /*
-  background-image: url('../img/flappybird-bg.png');
-  */
-  background-repeat: no-repeat; }
+  height: 100%;
+  background: url("../img/flappybird-bg-small.png");
+  background-repeat: no-repeat;
+  background-size: cover; }
+  @media screen and (min-width: 480px) {
+    body {
+      background: url("../img/flappybird-bg-med.png"); } }
+  @media screen and (min-width: 768px) {
+    body {
+      background: url("../img/flappybird-bg-large.png"); } }
+  @media screen and (min-width: 960px) {
+    body {
+      background: url("../img/flappybird-bg-xl.png"); } }
 
 container > img {
   position: absolute;
