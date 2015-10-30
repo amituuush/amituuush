@@ -10,6 +10,7 @@ var concat = require('gulp-concat');
 var rename = require('gulp-rename');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var livereload = require('gulp-livereload');
 
 // JavaScript linting task
 gulp.task('jshint', function() {
@@ -22,7 +23,8 @@ gulp.task('jshint', function() {
 gulp.task('sass', function() {
   return gulp.src('site/scss/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest('site/css'));
+    .pipe(gulp.dest('site/css'))
+    .pipe(livereload());
 });
 
 // Styles build task, concatenates all the files
@@ -40,7 +42,7 @@ gulp.task('html', function() {
     .pipe(gulp.dest('build/'));
 });
 
-// NOT FUNCTIONING (had '.' after "main.js')") JavaScript build task, removes whitespace and concatenates all files
+//JavaScript build task, removes whitespace and concatenates all files
 gulp.task('scripts', function() {
   return browserify('site/js/main.js')
     .bundle()
@@ -59,10 +61,18 @@ gulp.task('images', function() {
     .pipe(gulp.dest('build/img'));
 });
 
+// HTML Reload task
+gulp.task('html-reload', function() {
+  return gulp.src('site/index.html') 
+    .pipe(livereload());
+  });
+
 // Watch task
 gulp.task('watch', function() {
+  livereload.listen();
   gulp.watch('site/js/*.js', ['jshint']);
   gulp.watch('site/scss/*.scss', ['sass']);
+  gulp.watch('site/index.html', ['html-reload']);
 });
 
 // Default task
@@ -70,7 +80,6 @@ gulp.task('default', ['jshint', 'sass', 'watch']);
 
 // Build task
 gulp.task('build', ['jshint', 'sass', 'html', 'scripts', 'styles', 'images']);
-
 
 
 

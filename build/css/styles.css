@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -385,19 +386,21 @@ header h1 {
 
 section div.play-button {
   text-align: center;
-  padding-bottom: 1em; }
+  padding-bottom: 2em;
+  opacity: 1; }
   section div.play-button a {
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
     text-decoration: none;
     background-color: #00AFF0;
     color: #fff;
-    padding: 0.75em 2.2em;
+    padding: 1.2em 3.5em;
     border-radius: 30px; }
     section div.play-button a:hover {
       background-color: #05bbff; }
 
 section div.reveal {
+  font-family: "Open Sans", sans-serif;
   text-align: center;
   margin-top: 1.5em;
   color: #AEAEAE;
@@ -410,7 +413,9 @@ section h3 {
   font-family: "Open Sans", sans-serif;
   font-weight: 300;
   text-align: center;
-  color: #FFEF42;
+  color: #FFEF42; }
+
+section .hidden {
   display: none; }
 
 /*-----------------------------------*/
@@ -421,17 +426,67 @@ section h3 {
       width: 90%;
       max-width: 40em;
       margin: 0 auto; } }
-  @media screen and (min-width: 1024px) {
-    .container {
-      max-width: 1040px;
+
+section {
+  width: 100%; }
+  @media screen and (min-width: 24em) {
+    section {
+      width: 50%;
+      max-width: "min-width: 24em";
       margin: 0 auto; } }
 
-/*section {
-    width: 100%;
-    @media screen and ($bp-small) {
-        width: 50%;
-    }
-    @media screen and ($desktop) {
-        max-width: 25%;
-    }
-}*/
+/*How to Play----------------------------
+---------------------------------------*/
+.tooltip-item {
+  background: #00AFF0;
+  border-radius: 30px;
+  border: 1px solid gainsboro;
+  display: inline-block;
+  padding: 0.5em 1em;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  margin: 0 auto; }
+  .tooltip-item:focus,
+  .tooltip-item:hover .tooltip {
+    opacity: 1;
+    visibility: visible; }
+  .tooltip-item .tooltip {
+    position: absolute;
+    top: 3em;
+    right: 0;
+    left: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background-color: #00AFF0;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 2px 2px silver;
+    color: #333;
+    font-size: 0.9em;
+    line-height: 1.5em;
+    margin: 0 auto;
+    max-width: 16em;
+    opacity: 0;
+    padding: 1em;
+    text-align: center;
+    visibility: hidden;
+    z-index: 10;
+    overflow: visible; }
+    .tooltip-item .tooltip p {
+      color: #333;
+      line-height: 1.5em;
+      margin: 0; }
+    .tooltip-item .tooltip:after {
+      position: absolute;
+      right: 0;
+      left: 0;
+      border: 8px solid transparent;
+      bottom: 4.9em;
+      color: #00AFF0;
+      content: '▲';
+      font-size: 1.4em;
+      margin-left: -8px;
+      text-align: center;
+      text-shadow: 0 -2px 2px silver; }

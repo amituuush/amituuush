@@ -16,22 +16,31 @@
 <body>
 <container>
 	<header>
-  <img src="http://orig04.deviantart.net/6e8c/f/2014/040/c/e/flappy_bird_by_funcatty-d75spu0.gif" />
-  		<h1>Play Flappy Bird</h1>
+  		<img src="http://orig04.deviantart.net/6e8c/f/2014/040/c/e/flappy_bird_by_funcatty-d75spu0.gif" />
+  		<h1 id="main-header">Play Flappy Bird</h1>
 	</header>
 
 	<section>
-  <div class="play-button">
-    <a href="#">Play Now</a>
-  </div>
-  <div class="reveal">How to play</div>
-	  <h3>Travel as far as you can by clicking your mouse to keep yourself afloat and dodging incoming obstacles!</h3>
+	  <div class="play-button">
+	    <a href="#">Play</a>
+	  </div>
+
+	<div class="tooltip-item">
+  		How to Play <span id="triangle">▼</span>
+	  <div class="tooltip">
+	    <p>Travel as far as you can by clicking your mouse to keep yourself afloat and dodging incoming obstacles!</p>
+	  </div>
+	</div>
+
 	</section>
 </container>
+
 <footer>
 
 </footer>
-
-<script type="text/javascript" src="js/app.js"></script>
+<script defer src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script defer src="http://cdn.jsdelivr.net/velocity/1.2.2/velocity.min.js"></script>
+<script defer src="http://cdn.jsdelivr.net/velocity/1.2.2/velocity.ui.min.js"></script>
+<script defer type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
