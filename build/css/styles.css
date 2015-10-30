@@ -368,7 +368,6 @@ body {
 
 /*-----------------------------------*/
 body {
-  height: 100%;
   background: url("../img/flappybird-bg-small.png");
   background-repeat: no-repeat;
   background-size: cover; }
