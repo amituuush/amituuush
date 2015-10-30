@@ -36,9 +36,16 @@ $orange: #F19C65;
 $red: #CE4D45;
 
 body {
-  background-image: url('http://i.imgur.com/97OZkTx.png');
+  /*
+  background-image: url('../img/flappybird-bg.png');
+  */
   background-repeat: no-repeat;
 
+}
+
+container > img {
+  position: absolute;
+  height: 100%;
 }
 
 header {
@@ -86,7 +93,7 @@ section {
     text-decoration: none;
     background-color: $green;
     color: #fff;
-    padding: 0.75em 2.5em;
+    padding: 0.7em 2.4em;
     border-radius: 25px;
     box-shadow: 0px 2px 3px #000;
     
@@ -135,7 +142,7 @@ section {
 ---------------------------------------*/
 .tooltip-item {  
   $base-border-color: gainsboro !default;
-  $base-border-radius: 30px !default;
+  $base-border-radius: 12px !default;
   $base-line-height: 1.5em !default;
   $dark-gray: #333 !default;
   $base-font-color: $dark-gray !default;  
@@ -187,7 +194,7 @@ section {
     border-radius: $base-border-radius;
     box-shadow: -1px 1px 1px lighten(#000, 10%);
     color: $tooltip-color;
-    font-size: 0.9em; // Make sure you use -webkit-backface-visibility: hidden; on the body element to prevent 1px nudging bugs.
+    font-size: 1em; // Make sure you use -webkit-backface-visibility: hidden; on the body element to prevent 1px nudging bugs.
     line-height: 1.5em;
     margin: 0 auto 0 auto;
     max-width: $tooltip-max-width;

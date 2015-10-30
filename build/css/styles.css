@@ -363,10 +363,19 @@ html {
 *::before {
   box-sizing: inherit; }
 
+body {
+  -webkit-font-smoothing: antialiased; }
+
 /*-----------------------------------*/
 body {
-  background-image: url("http://i.imgur.com/NvS2cQ3.png");
+  /*
+  background-image: url('../img/flappybird-bg.png');
+  */
   background-repeat: no-repeat; }
+
+container > img {
+  position: absolute;
+  height: 100%; }
 
 header img {
   display: block;
@@ -378,45 +387,39 @@ header img {
   padding-top: 7em; }
 
 header h1 {
-  font-family: "Passion One", cursive;
+  font-family: "Open Sans", sans-serif;
   font-size: 4em;
   text-align: center;
   margin-top: 0;
-  color: #FFEF42; }
+  font-weight: 300;
+  color: #FFD265;
+  margin-bottom: 1.5em;
+  text-shadow: 0px 2px 10px #000; }
 
 section div.play-button {
   text-align: center;
-  padding-bottom: 2em;
-  opacity: 1; }
+  opacity: 1;
+  width: 17em;
+  height: 8em;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 2em; }
   section div.play-button a {
     font-family: "Open Sans", sans-serif;
     font-weight: 300;
+    font-size: 2.5em;
     text-decoration: none;
-    background-color: #00AFF0;
+    background-color: #2AA876;
     color: #fff;
-    padding: 1.2em 3.5em;
-    border-radius: 30px; }
+    padding: 0.7em 2.4em;
+    border-radius: 25px;
+    box-shadow: 0px 2px 3px #000; }
     section div.play-button a:hover {
-      background-color: #05bbff; }
-
-section div.reveal {
-  font-family: "Open Sans", sans-serif;
-  text-align: center;
-  margin-top: 1.5em;
-  color: #AEAEAE;
-  font-weight: 300; }
-  section div.reveal:hover {
-    cursor: pointer;
-    color: #bbbbbb; }
-
-section h3 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
-  text-align: center;
-  color: #FFEF42; }
-
-section .hidden {
-  display: none; }
+      background-color: #2eb881; }
+    section div.play-button a:active {
+      background-color: #207f59;
+      box-shadow: inset 0px 0px 1px #000;
+      color: #b3b3b3; }
 
 /*-----------------------------------*/
 .container {
@@ -438,44 +441,55 @@ section {
 /*How to Play----------------------------
 ---------------------------------------*/
 .tooltip-item {
-  background: #00AFF0;
-  border-radius: 30px;
-  border: 1px solid gainsboro;
+  background: #196345;
+  border-radius: 8px;
   display: inline-block;
-  padding: 0.5em 1em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
   position: relative;
   text-align: center;
-  color: #fff;
+  color: #cccccc;
+  font-weight: 100;
+  width: 9em;
+  font-size: 1em;
   margin: 0 auto; }
   .tooltip-item:focus,
   .tooltip-item:hover .tooltip {
     opacity: 1;
     visibility: visible; }
+  .tooltip-item:hover {
+    cursor: help;
+    background: #207f59; }
+  .tooltip-item #triangle {
+    margin-left: 15px;
+    font-size: 0.75em;
+    color: #2AA876;
+    text-shadow: 0px 1px 1px #262626; }
   .tooltip-item .tooltip {
     position: absolute;
     top: 3em;
     right: 0;
-    left: 0;
-    -webkit-transition: all 0.2s ease-in-out;
-    -moz-transition: all 0.2s ease-in-out;
-    transition: all 0.2s ease-in-out;
-    background-color: #00AFF0;
-    background: #fff;
-    border-radius: 30px;
-    box-shadow: 0 2px 2px silver;
+    left: -2.5em;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #196345;
+    background: #196345;
+    border-radius: 12px;
+    box-shadow: -1px 1px 1px #1a1a1a;
     color: #333;
-    font-size: 0.9em;
+    font-size: 1em;
     line-height: 1.5em;
-    margin: 0 auto;
+    margin: 0 auto 0 auto;
     max-width: 16em;
     opacity: 0;
     padding: 1em;
     text-align: center;
     visibility: hidden;
     z-index: 10;
-    overflow: visible; }
+    overflow: visible;
+    width: 15em; }
     .tooltip-item .tooltip p {
-      color: #333;
+      color: #fff;
       line-height: 1.5em;
       margin: 0; }
     .tooltip-item .tooltip:after {
@@ -483,10 +497,10 @@ section {
       right: 0;
       left: 0;
       border: 8px solid transparent;
-      bottom: 4.9em;
-      color: #00AFF0;
+      bottom: 4.98em;
+      color: #196345;
       content: '▲';
       font-size: 1.4em;
       margin-left: -8px;
       text-align: center;
-      text-shadow: 0 -2px 2px silver; }
+      text-shadow: 0px -1px 1px #1a1a1a; }
