@@ -11,21 +11,62 @@ var rename = require('gulp-rename');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var livereload = require('gulp-livereload');
+var gutil = require('gulp-util');
+var plumber = require('gulp-plumber');
+var notify = require("gulp-notify");
 
 // JavaScript linting task
 gulp.task('jshint', function() {
   return gulp.src('site/js/*.js')
-    .pipe(jshint())
+    .pipe(plumber({
+      errorHandler: reportError
+      }))
+    .pipe(jshint()).on('error', console.log)
     .pipe(jshint.reporter('default'));
 });
 
 // Compile Sass task
 gulp.task('sass', function() {
   return gulp.src('site/scss/*.scss')
-    .pipe(sass())
+    .pipe(plumber({
+      errorHandler: reportError
+      }))
+    .pipe(sass()).on('error', reportError)
+//    .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('site/css'))
     .pipe(livereload());
 });
+
+var reportError = function (error) {
+    var lineNumber = (error.lineNumber) ? 'LINE ' + error.lineNumber + ' -- ' : '';
+
+    notify({
+        title: 'Task Failed [' + error.plugin + ']',
+        message: lineNumber + 'See console.',
+        sound: 'Sosumi' // See: https://github.com/mikaelbr/node-notifier#all-notification-options-with-their-defaults
+    }).write(error);
+
+    gutil.beep(); // Beep 'sosumi' again
+
+    // Inspect the error object
+    //console.log(error);
+
+    // Easy error reporting
+    //console.log(error.toString());
+
+    // Pretty error reporting
+    var report = '';
+    var chalk = gutil.colors.white.bgRed;
+
+    report += chalk('TASK:') + ' [' + error.plugin + ']\n';
+    report += chalk('PROB:') + ' ' + error.message + '\n';
+    if (error.lineNumber) { report += chalk('LINE:') + ' ' + error.lineNumber + '\n'; }
+    if (error.fileName)   { report += chalk('FILE:') + ' ' + error.fileName + '\n'; }
+    console.error(report);
+
+    // Prevent the 'watch' task from stopping
+    this.emit('end');
+}
 
 // Styles build task, concatenates all the files
 gulp.task('styles', function() {
@@ -51,8 +92,6 @@ gulp.task('scripts', function() {
     .pipe(uglify())
     .pipe(gulp.dest('build/js'));
 });
-
-
 
 // Image optimization task
 gulp.task('images', function() {

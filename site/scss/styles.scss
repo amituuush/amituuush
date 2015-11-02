@@ -41,7 +41,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width 480px) {
     background: url('../img/flappybird-bg-med.png');
   }
 
