@@ -21,7 +21,7 @@ var notify = require("gulp-notify");
 // JavaScript linting task
 gulp.task('jshint', function() {
   return gulp.src([
-    'site/js/*.js', 
+    'site/js/**/*.js',
     '!site/js/app.js'])
     .pipe(plumber({
       errorHandler: reportError
@@ -77,8 +77,8 @@ var reportError = function (error) {
 gulp.task('watch', function() {
   livereload.listen();
   gulp.watch([
-    'site/js/*.js', 
-    '!site/js/app.js'], ['jshint']);
+    'site/js/**/*.js',
+    '!site/js/app.js'], ['jshint', 'scripts-combine']);
   gulp.watch('site/scss/*.scss', ['sass']);
   gulp.watch('site/index.html', ['html-reload']);
 });
@@ -91,33 +91,32 @@ gulp.task('html', function() {
     .pipe(gulp.dest('build/'));
 });
 
+// Combines all js files and sends to site/js
 gulp.task('scripts-combine', function() {
   return browserify([
-    'site/js/main.js', 
-    'site/js/flappy_bird.js', 
+    'site/js/main.js',
+    'site/js/flappy_bird.js',
     'site/js/components/graphics/bird.js',
-    'site/js/components/graphics/pipe.js', 
+    'site/js/components/graphics/pipe.js',
+    'site/js/components/physics/physics.js',
+    'site/js/components/collision/circle.js',
+    'site/js/components/collision/rect.js',
     'site/js/entities/bird.js',
-    'site/js/entities/pipe.js', 
-    'site/js/systems/graphics.js'])
+    'site/js/entities/pipe.js',
+    'site/js/systems/graphics.js',
+    'site/js/systems/input.js',
+    'site/js/systems/physics.js',
+    'site/js/systems/collision.js'
+    ])
     .bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest('site/js'))
 });
 
 
-// JavaScript build task, removes whitespace and concatenates all files
+// JavaScript build task, removes whitespace and concatenates all files, sends to build/js
 gulp.task('scripts', function() {
-  return browserify([
-  	'site/js/main.js', 
-  	'site/js/flappy_bird.js', 
-  	'site/js/components/graphics/bird.js',
-    'site/js/components/graphics/pipe.js', 
-  	'site/js/entities/bird.js',
-    'site/js/entities/pipe.js', 
-  	'site/js/systems/graphics.js'])
-    .bundle()
-    .pipe(source('app.js'))
+  return gulp.src('site/js/app.js')
     .pipe(buffer())
     .pipe(uglify())
     .pipe(gulp.dest('build/js'));
@@ -140,7 +139,7 @@ gulp.task('images', function() {
 
 // HTML Reload task
 gulp.task('html-reload', function() {
-  return gulp.src('site/index.html') 
+  return gulp.src('site/index.html')
     .pipe(livereload());
   });
 
@@ -150,9 +149,3 @@ gulp.task('default', ['jshint', 'sass', 'watch']);
 
 // Build task
 gulp.task('build', ['jshint', 'sass', 'html', 'scripts', 'scripts-combine', 'styles', 'images']);
-
-
-
-
-
-
