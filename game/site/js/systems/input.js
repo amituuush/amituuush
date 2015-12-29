@@ -14,4 +14,10 @@ InputSystem.prototype.onClick = function() {
     bird.components.physics.velocity.y = 0.7;
 };
 
+InputSystem.prototype.stop = function() {
+    var bird = this.entities[0];
+    bird.components.physics.velocity.y = 0;
+ // create method on flappy bird constructor
+};
+
 exports.InputSystem = InputSystem;

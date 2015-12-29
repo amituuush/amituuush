@@ -1,17 +1,19 @@
 var graphicsComponent = require("../components/graphics/pipe");
 var physicsComponent = require("../components/physics/physics");
 var collisionComponent = require("../components/collision/rect");
-// var settings = require("../settings");
+var pipeSystem = require("../systems/pipesystem");
+var flappyBird = require("../flappy_bird");
 
 var Pipe = function(positionX, positionY) {
 	var physics = new physicsComponent.PhysicsComponent(this);
 	physics.position.x = positionX;
     physics.position.y = positionY;
-    physics.velocity.x = -0.65;
+    physics.velocity.x = -0.75;
 
     var graphics = new graphicsComponent.PipeGraphicsComponent(this);
 
     var collision = new collisionComponent.RectCollisionComponent(this, graphics.size);
+
     collision.onCollision = this.onCollision.bind(this);
 
     this.components = {
@@ -22,7 +24,18 @@ var Pipe = function(positionX, positionY) {
 };
 
 Pipe.prototype.onCollision = function(entity) {
-    // console.log("Pipe collided with bird");
+	if (entity.components.collision.type === "circle") {
+		window.app.stop();
+		window.app.inputOff();
+		document.getElementById('game-over').innerHTML = "Pipes don't like birds. Remember that. Try again!";
+		document.getElementById('pipes-cleared').innerHTML = window.app.scores.realScore;
+
+		$('#game-over-modal').css('display', 'block');
+	}
+	else if (entity.components.collision.type === "counter") {
+
+	}
+
 };
 
 exports.Pipe = Pipe;
